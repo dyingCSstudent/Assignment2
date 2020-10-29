@@ -1,5 +1,8 @@
 package roleplayinggame;
 
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Scanner;
 import roleplayinggame.Items.Armour;
 import roleplayinggame.Items.Weapon;
