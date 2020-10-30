@@ -1,5 +1,4 @@
 package roleplayinggame;
-
 import database.Database;
 import java.beans.Statement;
 import java.sql.Connection;
