@@ -89,7 +89,7 @@ public class Player {
      */
     @Override
     public String toString(){
-        return "Name: " + this.name +", "+ "Health: " + this.health +", "+ "Damage: " + this.damage +", "+ "Armour: " + this.armour +", "+ "Gold: " + this.gold +", "+ "Dead: " + this.isdead;
+        return "Name: " + this.name +",\n"+ "Health: " + this.health +", \n"+ "Damage: " + this.damage +", \n"+ "Armour: " + this.armour +", \n"+ "Gold: " + this.gold +", \n"+ "Dead: " + this.isdead;
     }
     
     /**

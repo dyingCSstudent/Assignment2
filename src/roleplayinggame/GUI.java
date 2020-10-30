@@ -8,28 +8,34 @@ import database.Database;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.border.LineBorder;
 import roleplayinggame.Items.Armour;
 import roleplayinggame.Items.Weapon;
 import roleplayinggame.Mobs.Bandit;
 import roleplayinggame.Player.Player;
+
 /**
- *
- * @author Skyrim
+ * This is Class called GUI, and it is where it contains a 2nd main method which starts the GUI form of the Game
+ * @author Swapnil Kumar 17982217
  * 
  */
 
-
-
-
 public class GUI extends JFrame{
 
-    
+    /**
+     * This is the 2nd main method of the Project where the objects are initialized
+     * @param args
+     */
     public static void main(String[] args){
 
         new GUI();
     }
     
-    //Database database = new Database();
+    //Database database = new Database(); unable to begin database as an error with a driver occured
+    
+    /**
+     * This is where the necessary objects and variables are initialized
+     */
     Player player = new Player("User", 100, 10, 10, 200, false);
     Weapon w1 = new Weapon("Sword", 4, false, 25);
     Armour a1 = new Armour("Breastplate", 10, false, 50);
@@ -51,22 +57,29 @@ public class GUI extends JFrame{
      JButton option1;
      JButton option2;
      JButton option3;
+     JButton option4;
      
      JPanel usernameinput;
      JTextField userinput;
+     JButton setName;
+     JPanel textfieldbutton;
      
      TitleScreenHandler tsHandler = new TitleScreenHandler();
      AttributeHandler aHandler = new AttributeHandler();
      InventoryHandler iHandler = new InventoryHandler();
      CombatHandler cHandler = new CombatHandler();
+     ExitHandler eHandler = new ExitHandler();
+     UserInputHandler uHandler = new UserInputHandler();
      
-     
-     public GUI(){
+    /**
+     *
+     */
+    public GUI(){
          
 
      
         window = new JFrame();
-        window.setSize(800,600);
+        window.setSize(800,700);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.gray);
         window.setLayout(null);
@@ -89,6 +102,7 @@ public class GUI extends JFrame{
         startButtonButton.setBackground(Color.gray);
         startButtonButton.setForeground(Color.black);
         startButtonButton.setFont(buttonFont);
+        startButtonButton.setBorder(new LineBorder(Color.BLACK));
         
         startButtonButton.addActionListener(tsHandler);
         startButtonPanel.add(startButtonButton);
@@ -96,7 +110,10 @@ public class GUI extends JFrame{
         
      }
         
-     public void gameScreen(){
+    /**
+     *
+     */
+    public void gameScreen(){
          
          //database.autoConnectDatabase();
          player.accessInventory().add(w1);
@@ -117,11 +134,13 @@ public class GUI extends JFrame{
          mainTextPanel.add(mainTextArea);
          content.add(mainTextPanel);
          
+         
+         
          //
          playerOptions = new JPanel();
          playerOptions.setBounds(250, 350, 300, 350);
          playerOptions.setBackground(Color.gray);
-         playerOptions.setLayout(new GridLayout(6,1));
+         playerOptions.setLayout(new GridLayout(3,12));
          
          option1 = new JButton("Attributes");
          option1.setBackground(Color.gray);
@@ -129,6 +148,7 @@ public class GUI extends JFrame{
          option1.setFont(buttonFont);
          playerOptions.add(option1);
          option1.addActionListener(aHandler);
+         option1.setBorder(new LineBorder(Color.BLACK));
          
          option2 = new JButton("Inventory");
          option2.setBackground(Color.gray);
@@ -136,6 +156,7 @@ public class GUI extends JFrame{
          option2.setFont(buttonFont);
          playerOptions.add(option2);
          option2.addActionListener(iHandler);
+         option2.setBorder(new LineBorder(Color.BLACK));
          
          option3 = new JButton("Combat");
          option3.setBackground(Color.gray);
@@ -143,29 +164,60 @@ public class GUI extends JFrame{
          option3.setFont(buttonFont);
          playerOptions.add(option3);
          option3.addActionListener(cHandler);
+         option3.setBorder(new LineBorder(Color.BLACK));
+         
+         option4 = new JButton("Exit");
+         option4.setBackground(Color.gray);
+         option4.setForeground(Color.black);
+         option4.setFont(buttonFont);
+         option4.setBorder(new LineBorder(Color.BLACK));
+         playerOptions.add(option4);
+         option4.addActionListener(eHandler);
          
          content.add(playerOptions);
          
          //
          
          usernameinput = new JPanel();
-         usernameinput.setBounds(100, 50, 100, 30);
-         usernameinput.setBackground(Color.white);
+         usernameinput.setBounds(125, 60, 150, 75);
+         usernameinput.setBackground(Color.gray);
          userinput = new JTextField(5);
+         userinput.setBorder(new LineBorder(Color.BLACK));
          usernameinput.add(userinput);
          content.add(usernameinput);
          
+         
+         textfieldbutton = new JPanel();
+         textfieldbutton.setBounds(200, 50, 250, 75);
+         textfieldbutton.setBackground(Color.gray);
+         content.add(textfieldbutton);
+         
+         setName = new JButton("Set Name");
+         setName.setBackground(Color.gray);
+         setName.setForeground(Color.black);
+         setName.setFont(buttonFont);
+         setName.setBorder(new LineBorder(Color.BLACK));
+         textfieldbutton.add(setName);
+         setName.addActionListener(uHandler);
+         
      }
      
-     public class TitleScreenHandler implements ActionListener{
+    /**
+     *
+     */
+    public class TitleScreenHandler implements ActionListener{
            
         public void actionPerformed(ActionEvent event){
             
             gameScreen();
+            
         }
      }
      
-     public class AttributeHandler implements ActionListener{
+    /**
+     *
+     */
+    public class AttributeHandler implements ActionListener{
            
         public void actionPerformed(ActionEvent event){
             
@@ -173,7 +225,10 @@ public class GUI extends JFrame{
         }
      }
      
-     public class InventoryHandler implements ActionListener{
+    /**
+     *
+     */
+    public class InventoryHandler implements ActionListener{
            
         public void actionPerformed(ActionEvent event){
             
@@ -181,7 +236,10 @@ public class GUI extends JFrame{
         }
      }
      
-     public class CombatHandler implements ActionListener{
+    /**
+     *
+     */
+    public class CombatHandler implements ActionListener{
            
         public void actionPerformed(ActionEvent event){
             
@@ -199,6 +257,31 @@ public class GUI extends JFrame{
      }
      
 }
+
+    /**
+     *
+     */
+    public class ExitHandler implements ActionListener{
+           
+        public void actionPerformed(ActionEvent event){
+            
+            System.exit(0);
+        }
+     }
+        
+    /**
+     *
+     */
+    public class UserInputHandler implements ActionListener{
+           
+        public void actionPerformed(ActionEvent event){
+            
+            player.setName(userinput.getText());;
+            usernameinput.setVisible(false);
+            textfieldbutton.setVisible(false);
+            
+        }
+     }
      
 }
 
