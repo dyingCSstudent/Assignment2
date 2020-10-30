@@ -1,5 +1,6 @@
 package roleplayinggame;
 
+import database.Database;
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,6 +22,9 @@ public class RolePlayingGame {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Database database = new Database();
+        database.autoConnectDatabase();
         
         boolean end = false;
         Scanner scan = new Scanner(System.in);
