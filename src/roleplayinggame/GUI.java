@@ -53,12 +53,11 @@ public class GUI extends JFrame{
     JButton option2;
     JButton option3;
     JButton option4;
-     
+    
     JPanel usernameinput;
     JTextField userinput;
     JButton setName;
     JPanel textfieldbutton;
-     
      
     //These are the event handlers for the ActionListeners
     VisibilityHandler vHandler = new VisibilityHandler();
@@ -195,7 +194,6 @@ public class GUI extends JFrame{
         setName.setBorder(new LineBorder(Color.BLACK));
         textfieldbutton.add(setName);
         setName.addActionListener(uHandler);
-        
     }
      
     /**
